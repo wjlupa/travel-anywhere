@@ -56,3 +56,14 @@ przykładowe przypadki testowe mogłyby wyglądać tak:
       - oczekiwany rezultat
         - w polu zawierającym wynik pojawia się informacja, że dzielenie przez 0 nie jest możliwe
 ```
+
+
+## Zadanie 1, część 1:
+
+Wykorzystując technikę _klas równoważności_ zaprojektuj _minimalną_ ilość przypadków testowych pokrywających następujące wymaganie:
+
+```
+- Jako turysta-podróżnik wybierający się do punktu Lon2, Lat2 chciałbym wiedzieć gdzie znajduje się najbliższy hotel.
+```
+
+Domyślny promień poszukiwań wynosi 30km.
