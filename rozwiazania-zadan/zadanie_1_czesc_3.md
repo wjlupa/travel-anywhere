@@ -24,7 +24,7 @@ Wykorzystując technikę _tablic decyzyjnych_ zaprojektuj _minimalną_ ilość p
     - uruchom aplikację zgodnie z README
     - pobierz token ATK do obsługi API oraz zaloguj się nim
 - kroki testowe
-    - kliknij na *jakieś małe lotnisko bez wypożyczalni*
+    - kliknij na *jakieś małe lotnisko bez wypożyczalni* \[*TODO: znaleźć takie na labach*\]
 - oczekiwany rezultat:
     - na liście pojawiają się najbliższe, lecz nie ma wypożyczalni
 
@@ -33,7 +33,7 @@ Wykorzystując technikę _tablic decyzyjnych_ zaprojektuj _minimalną_ ilość p
     - uruchom aplikację zgodnie z README
     - pobierz token ATK do obsługi API oraz zaloguj się nim
 - kroki testowe
-    - kliknij na *miasto z wypożyczalnią ale bez lotniska*
+    - kliknij na *miasto z wypożyczalnią ale bez lotniska* \[*TODO: znaleźć takie na labach*\]
 - oczekiwany rezultat:
     - na liście pojawiają się najbliższe wypożyczalnie, lecz nie ma lotniska
 
