@@ -1,8 +1,10 @@
 # Zadanie 1, część 1
 
-Wykorzystując technikę klas równoważności zaprojektuj **minimalną** ilość przypadków testowych pokrywających następujące wymaganie:  
+Wykorzystując technikę _klas równoważności_ zaprojektuj _minimalną_ ilość przypadków testowych pokrywających następujące wymaganie:
 
-- Jako turysta-podróżnik wybierający się do punktu Lon2, Lat2 chciałbym wiedzieć gdzie znajduje się najbliższy hotel.  
+```
+- Jako turysta-podróżnik wybierający się do punktu Lon2, Lat2 chciałbym wiedzieć gdzie znajduje się najbliższy hotel.
+```
 
 Domyślny promień poszukiwań wynosi 30km.
 

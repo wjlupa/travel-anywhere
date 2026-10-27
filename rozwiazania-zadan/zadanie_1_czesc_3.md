@@ -1,8 +1,10 @@
 # Zadanie 1, część 3
 
-Wykorzystując technikę tablic decyzyjnych zaprojektuj minimalną ilość przypadków testowych pokrywających następujące wymaganie:
+Wykorzystując technikę _tablic decyzyjnych_ zaprojektuj _minimalną_ ilość przypadków testowych pokrywających następujące wymaganie:
 
-- Jako turysta-podróżnik wybierający się do punktu Lon1, Lat1 chciałbym wiedzieć gdzie znajduje się najbliższe lotnisko i najbliższa wypożyczalnia samochodów (względem mojego miejsca docelowego).
+```
+- Jako turysta-podróżnik wybierający się do punktu Lon1, Lat1 chciałbym wiedzieć gdzie znajduje się najbliższe lotnisko i najbliższa wypożyczalnia samochodów (względem mojego miejsca docelowego). 
+```
 
 ## Rozwiązanie
 

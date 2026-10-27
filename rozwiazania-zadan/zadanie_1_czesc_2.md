@@ -1,8 +1,10 @@
 # Zadanie 1, część 2
 
-Wykorzystując technikę **Analizy wartości brzegowych** zaprojektuj **minimalną** ilość przypadków testowych pokrywających następujące wymaganie:
+Wykorzystując technikę _Analizy wartości brzegowych_ zaprojektuj _minimalną_ ilość przypadków testowych pokrywających następujące wymaganie:
 
+```
 - Jako turysta-podróżnik wybierający się do punktu Lon2, Lat2 chciałbym wiedzieć gdzie znajduje się najbliższy hotel.
+```
 
 Domyślny promień poszukiwań wynosi 30km.
 
