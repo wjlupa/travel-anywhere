@@ -67,3 +67,26 @@ Wykorzystując technikę _klas równoważności_ zaprojektuj _minimalną_ iloś�
 ```
 
 Domyślny promień poszukiwań wynosi 30km.
+
+
+## Zadanie 1, część 2:
+
+Wykorzystując technikę _Analizy wartości brzegowych_ zaprojektuj _minimalną_ ilość przypadków testowych pokrywających następujące wymaganie:
+
+```
+- Jako turysta-podróżnik wybierający się do punktu Lon2, Lat2 chciałbym wiedzieć gdzie znajduje się najbliższy hotel.
+```
+
+Domyślny promień poszukiwań wynosi 30km.
+
+## Zadanie 1, część 3:
+
+Wykorzystując technikę _tablic decyzyjnych_ zaprojektuj _minimalną_ ilość przypadków testowych pokrywających następujące wymaganie:
+
+```
+- Jako turysta-podróżnik wybierający się do punktu Lon1, Lat1 chciałbym wiedzieć gdzie znajduje się najbliższe lotnisko i najbliższa wypożyczalnia samochodów (względem mojego miejsca docelowego). 
+```
+
+## Zadanie 1, część 4:
+
+Wykorzystując technikę _przypadków testowych_ zaprojektuj 3 testy pokrywające najistotniejsze (w ocenie Waszego zespołu) wymagania opisane w `project_requirements.md`.
