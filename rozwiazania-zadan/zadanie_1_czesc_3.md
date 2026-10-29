@@ -24,18 +24,18 @@ Wykorzystując technikę _tablic decyzyjnych_ zaprojektuj _minimalną_ ilość p
     - uruchom aplikację zgodnie z README
     - pobierz token ATK do obsługi API oraz zaloguj się nim
 - kroki testowe
-    - kliknij na *jakieś małe lotnisko bez wypożyczalni* \[*TODO: znaleźć takie na labach*\]
+    - kliknij na lodowiec Metal Creek na Alasce
 - oczekiwany rezultat:
-    - na liście pojawiają się najbliższe, lecz nie ma wypożyczalni
+    - na liście pojawiają się 2 pobliskie lotniska, lecz nie ma wypożyczalni
 
 ### 3. identyfikator testu: 133_zero_lotnisk_jest_wypozyczalnia
 - warunki wejściowe:
     - uruchom aplikację zgodnie z README
     - pobierz token ATK do obsługi API oraz zaloguj się nim
 - kroki testowe
-    - kliknij na *miasto z wypożyczalnią ale bez lotniska* \[*TODO: znaleźć takie na labach*\]
+    - kliknij na centrum Kalisza
 - oczekiwany rezultat:
-    - na liście pojawiają się najbliższe wypożyczalnie, lecz nie ma lotniska
+    - na liście pojawia się najbliższa wypożyczalnia, lecz nie ma lotniska
 
 ### 4. identyfikator testu: 134_jest_lotnisko_jest_wypozyczalnia
 - warunki wejściowe:
