@@ -12,10 +12,11 @@ public class BasicTests {
     public void test1() {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                    .setHeadless(false));
+                    .setHeadless(true));
             BrowserContext context = browser.newContext();
             Page page = context.newPage();
             page.navigate("http://localhost:3000/");
+            System.err.println(atkToken.length());
             page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Login")).click();
             page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("ATK Token")).click();
             page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("ATK Token")).fill(atkToken);
@@ -37,5 +38,32 @@ public class BasicTests {
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
             assertThat(page.locator(".hotelName")).hasText(hotelName);
         }
+    }
+    @Test
+    public void test_first_name_length_validator() {
+        Playwright playwright = Playwright.create();
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        Page page = context.newPage();
+        page.navigate("http://localhost:3000/");
+        System.err.println(atkToken.length());
+        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Login")).click();
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("ATK Token")).click();
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("ATK Token")).fill(atkToken);
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
+        page.locator("div").filter(new Locator.FilterOptions().setHasText("+− Leaflet | © OpenStreetMap")).nth(3).click();
+        page.locator(".btn").first().click();
+
+
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
+        assertThat(page.locator(".firstNameGroup").locator(".invalid-feedback")).hasText("Required");
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
+        assertThat(page.locator(".firstNameGroup").locator(".invalid-feedback")).hasText("Max 40 characters");
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("Adam");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
+        assertThat(page.locator(".firstNameGroup").locator(".invalid-feedback")).isEmpty();
+
+
     }
 }
