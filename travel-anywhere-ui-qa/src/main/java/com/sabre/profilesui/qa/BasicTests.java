@@ -34,7 +34,7 @@ public class BasicTests {
         page.locator(".btn").first().click();
     }
     @Test
-    public void test1() {
+    public void test_form_passes_when_provided_valid_data() {
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).click();
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("First Name");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last name")).click();
