@@ -11,7 +11,7 @@ public class PlaywrightRunner {
     protected Browser browser;
     protected Page page;
     @BeforeClass(alwaysRun = true)
-    public void setUp() {
+    public void setUpLoggedInBrowser() {
         System.err.println(atkToken.length()); // fails fast if token is null
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
@@ -23,7 +23,7 @@ public class PlaywrightRunner {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
     }
     @AfterClass(alwaysRun = true)
-    public void tearDown() {
+    public void tearDownLoggedInBrowser() {
         page.close();
         browser.close();
         playwright.close();
