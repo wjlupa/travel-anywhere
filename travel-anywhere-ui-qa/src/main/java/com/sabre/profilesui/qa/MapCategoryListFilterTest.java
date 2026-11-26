@@ -35,7 +35,7 @@ public class MapCategoryListFilterTest {
 
     }
     @BeforeMethod
-    void openReservationForm() {
+    void clickOnMapAndDeselect() {
         page.navigate("http://localhost:3000/");
         page.locator("div").filter(new Locator.FilterOptions().setHasText("+− Leaflet | © OpenStreetMap")).nth(3).click();
         String[] categories = {"hotel", "air", "rail", "car"};
@@ -47,7 +47,7 @@ public class MapCategoryListFilterTest {
         }
     }
     @Test
-    public void shouldFilterMapByHotelCategory() {
+    public void shouldFilterMapByHotelCategoryAndOneElementBeVisible() {
         page.locator("input[name='hotel']").uncheck();
         assertThat(page.getByText("MapBookingsSign out+− Leaflet")).isVisible();
         page.locator("input[name='hotel']").check();
@@ -55,13 +55,13 @@ public class MapCategoryListFilterTest {
     }
 
     @Test
-    public void shouldFilterMapByAirCategory() {
+    public void shouldFilterMapByAirCategoryAndOneElementBeVisible() {
         page.locator("input[name='air']").check();
         assertThat(page.locator("body")).containsText("Category: AIR");
     }
 
     @Test
-    public void shouldFilterMapByRailCategory() {
+    public void shouldFilterMapByRailCategoryAndOneElementBeVisible() {
         page.locator("div")
                 .filter(new Locator.FilterOptions()
                         .setHasText(Pattern.compile("^rail$")))
@@ -71,7 +71,7 @@ public class MapCategoryListFilterTest {
     }
 
     @Test
-    public void shouldFilterMapByCarCategory() {
+    public void shouldFilterMapByCarCategoryAndOneElementBeVisible() {
         page.locator("input[name='car']").check();
         assertThat(page.locator("body")).containsText("Category: CAR");
     }
