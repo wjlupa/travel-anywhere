@@ -1,6 +1,7 @@
 package com.sabre.profilesui.qa;
 
 import com.microsoft.playwright.*;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -10,17 +11,16 @@ import com.microsoft.playwright.Locator;
 import java.util.List;
 
 public class MapCategoryListFilterTest extends PlaywrightRunner {
+    MainPage mainPage;
+    @BeforeClass
+    void setUpMainPage() {
+        mainPage = new MainPage(page);
+        mainPage.open();
+    }
     @BeforeMethod
     void clickOnMapAndDeselect() {
-        page.navigate("http://localhost:3000/");
-        page.locator("div").filter(new Locator.FilterOptions().setHasText("+− Leaflet | © OpenStreetMap")).nth(3).click();
-        String[] categories = {"hotel", "air", "rail", "car"};
-        for (String category : categories) {
-            Locator checkbox = page.locator("input[name='" + category + "']");
-            if (checkbox.isChecked()) {
-                checkbox.uncheck();
-            }
-        }
+        mainPage.clickOnMap();
+        mainPage.deselectCheckBoxes();
     }
     public void shouldAllLocationsHaveText(String expectedCategoryText) {
         List<Locator> locationsLocators = page.locator(".location").all();

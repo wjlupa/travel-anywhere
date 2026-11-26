@@ -2,15 +2,22 @@ package com.sabre.profilesui.qa;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class BasicTests extends PlaywrightRunner {
+    MainPage mainPage;
+    @BeforeClass
+    void setUpMainPage() {
+        mainPage = new MainPage(page);
+    }
     @BeforeMethod
     void openReservationForm() {
-        page.navigate("http://localhost:3000/");
-        page.locator("div").filter(new Locator.FilterOptions().setHasText("+− Leaflet | © OpenStreetMap")).nth(3).click();
+        mainPage.open();
+        mainPage.clickOnMap();
         page.locator(".btn").first().click();
     }
     @Test
