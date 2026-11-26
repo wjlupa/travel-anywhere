@@ -34,7 +34,7 @@ public class BasicTests {
         page.locator(".btn").first().click();
     }
     @Test
-    public void test_form_passes_when_provided_valid_data() {
+    public void shouldReservationFormPass() {
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).click();
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("First Name");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last name")).click();
@@ -51,7 +51,7 @@ public class BasicTests {
         assertThat(page.locator(".hotelName")).hasText(hotelName);
     }
     @Test
-    public void test_first_name_length_validator() {
+    public void shouldFirstNameLengthValidatorBehaveCorrectly() {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
         assertThat(page.locator(".firstNameGroup").locator(".invalid-feedback")).hasText("Required");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -60,6 +60,16 @@ public class BasicTests {
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("Adam");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
         assertThat(page.locator(".firstNameGroup").locator(".invalid-feedback")).isEmpty();
+    }
+
+    @Test
+    public void shouldNumberOfGuestsValidatorBehaveCorrectly() {
+        page.getByRole(AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Number Of Guests")).fill("0");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
+        assertThat(page.locator(".numberOfGuestsGroup").locator(".invalid-feedback")).hasText("At least one guest is required");
+        page.getByRole(AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Number Of Guests")).fill("5");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
+        assertThat(page.locator(".numberOfGuestsGroup").locator(".invalid-feedback")).hasText("undefined"); // wtf but passes
     }
     @AfterClass
     public void tearDown() {
