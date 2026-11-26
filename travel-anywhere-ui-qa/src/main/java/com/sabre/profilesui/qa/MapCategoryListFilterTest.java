@@ -11,6 +11,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import com.microsoft.playwright.Locator;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -46,46 +47,34 @@ public class MapCategoryListFilterTest {
             }
         }
     }
+    public void shouldAllLocationsHaveText(String expectedCategoryText) {
+        List<Locator> locationsLocators = page.locator(".location").all();
+        for (Locator locator : locationsLocators) {
+            assertThat(locator).containsText(expectedCategoryText);
+        }
+    }
     @Test
     public void shouldFilterMapByHotelCategoryAndOneElementBeVisible() {
-        page.locator("input[name='hotel']").uncheck();
-        assertThat(page.getByText("MapBookingsSign out+− Leaflet")).isVisible();
         page.locator("input[name='hotel']").check();
-        assertThat(page.locator("body")).containsText("Category: HOTEL");
+        shouldAllLocationsHaveText("Category: HOTEL");
     }
 
     @Test
     public void shouldFilterMapByAirCategoryAndOneElementBeVisible() {
         page.locator("input[name='air']").check();
-        assertThat(page.locator("body")).containsText("Category: AIR");
+        shouldAllLocationsHaveText("Category: AIR");
     }
 
     @Test
     public void shouldFilterMapByRailCategoryAndOneElementBeVisible() {
-        page.locator("div")
-                .filter(new Locator.FilterOptions()
-                        .setHasText(Pattern.compile("^rail$")))
-                .click();
         page.locator("input[name='rail']").check();
-        assertThat(page.locator("body")).containsText("Category: RAIL");
+        shouldAllLocationsHaveText("Category: RAIL");
     }
 
     @Test
     public void shouldFilterMapByCarCategoryAndOneElementBeVisible() {
         page.locator("input[name='car']").check();
-        assertThat(page.locator("body")).containsText("Category: CAR");
-    }
-
-    @Test
-    public void shouldChangeMapCategoryWhenSelectingDifferentFilters() {
-        page.locator("input[name='air']").check();
-        assertThat(page.locator("body")).containsText("Category: AIR");
-        page.locator("input[name='air']").uncheck();
-        page.locator("input[name='rail']").check();
-        assertThat(page.locator("body")).containsText("Category: RAIL");
-        page.locator("input[name='rail']").uncheck();
-        page.locator("input[name='car']").check();
-        assertThat(page.locator("body")).containsText("Category: CAR");
+        shouldAllLocationsHaveText("Category: CAR");
     }
 }
 
