@@ -5,6 +5,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -26,11 +27,14 @@ public class BasicTests {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
 
     }
-    @Test
-    public void test1() {
+    @BeforeMethod
+    void openReservationForm() {
         page.navigate("http://localhost:3000/");
         page.locator("div").filter(new Locator.FilterOptions().setHasText("+− Leaflet | © OpenStreetMap")).nth(3).click();
         page.locator(".btn").first().click();
+    }
+    @Test
+    public void test1() {
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).click();
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("First Name");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last name")).click();
@@ -48,11 +52,6 @@ public class BasicTests {
     }
     @Test
     public void test_first_name_length_validator() {
-        page.navigate("http://localhost:3000/");
-        page.locator("div").filter(new Locator.FilterOptions().setHasText("+− Leaflet | © OpenStreetMap")).nth(3).click();
-        page.locator(".btn").first().click();
-
-
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
         assertThat(page.locator(".firstNameGroup").locator(".invalid-feedback")).hasText("Required");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First name")).fill("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
