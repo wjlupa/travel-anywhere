@@ -2,9 +2,6 @@ package com.sabre.profilesui.qa;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
