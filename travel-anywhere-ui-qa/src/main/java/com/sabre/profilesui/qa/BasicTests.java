@@ -9,24 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class BasicTests {
-    static String atkToken = System.getProperty("atkToken");
-    private Playwright playwright;
-    private Browser browser;
-    private Page page;
-    @BeforeClass
-    public void setUp() {
-        System.err.println(atkToken.length()); // fails fast if token is null
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-        page = browser.newContext().newPage();
-        page.navigate("http://localhost:3000/");
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Login")).click();
-        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("ATK Token")).click();
-        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("ATK Token")).fill(atkToken);
-        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
-
-    }
+public class BasicTests extends PlaywrightRunner {
     @BeforeMethod
     void openReservationForm() {
         page.navigate("http://localhost:3000/");
@@ -70,11 +53,5 @@ public class BasicTests {
         page.getByRole(AriaRole.SPINBUTTON, new Page.GetByRoleOptions().setName("Number Of Guests")).fill("5");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
         assertThat(page.locator(".numberOfGuestsGroup").locator(".invalid-feedback")).hasText("undefined"); // wtf but passes
-    }
-    @AfterClass
-    public void tearDown() {
-        page.close();
-        browser.close();
-        playwright.close();
     }
 }
